@@ -1,6 +1,6 @@
 #![allow(dead_code)]
 
-use indigo_store::{type_map, Field, Store, TypeMap};
+use indigo_store::{Field, Store, TypeMap, type_map};
 use std::{
     convert::Infallible,
     sync::{Arc, Mutex},

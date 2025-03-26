@@ -1,6 +1,6 @@
 #![allow(dead_code)]
 
-use indigo_store::{type_map, Store};
+use indigo_store::{Store, type_map};
 use std::sync::{Arc, Mutex};
 
 #[derive(Debug, PartialEq)]
