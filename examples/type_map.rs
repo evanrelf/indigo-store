@@ -13,7 +13,7 @@ enum NameAction {
 
 fn name_reducer(state: &mut Name, action: &NameAction) {
     match action {
-        NameAction::Renamed(name) => state.0 = name.clone(),
+        NameAction::Renamed(name) => state.0.clone_from(name),
         NameAction::Cleared => state.0.clear(),
     }
 }

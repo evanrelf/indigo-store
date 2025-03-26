@@ -10,6 +10,7 @@ pub struct TypeMap {
 }
 
 impl TypeMap {
+    #[must_use]
     pub fn new() -> Self {
         Self::default()
     }
@@ -21,6 +22,7 @@ impl TypeMap {
         self.hash_map.insert(value.type_id(), Box::new(value));
     }
 
+    #[must_use]
     pub fn get<T>(&self) -> Option<&T>
     where
         T: Any,
@@ -31,6 +33,7 @@ impl TypeMap {
             .map(|b| b.downcast_ref().unwrap())
     }
 
+    #[must_use]
     pub fn get_mut<T>(&mut self) -> Option<&mut T>
     where
         T: Any,

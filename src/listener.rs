@@ -53,10 +53,10 @@ where
     L: Listener,
 {
     fn listen(&mut self, state: &S) {
-        let state = match state.field() {
-            Err(_) => panic!("Listener requires state not present in store"),
-            Ok(s) => s,
-        };
+        let state = state
+            .field()
+            .ok()
+            .expect("Listener requires state not present in store");
 
         self.listen(state);
     }

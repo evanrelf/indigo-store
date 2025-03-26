@@ -65,10 +65,10 @@ where
     R::Action: Any,
 {
     fn reduce(&self, state: &mut S, action: &dyn Any) -> bool {
-        let state = match state.field_mut() {
-            Err(_) => panic!("Reducer requires state not present in store"),
-            Ok(s) => s,
-        };
+        let state = state
+            .field_mut()
+            .ok()
+            .expect("Reducer requires state not present in store");
 
         let action = match action.downcast_ref() {
             None => return false,

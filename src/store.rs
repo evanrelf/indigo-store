@@ -1,4 +1,7 @@
-use crate::{listener::*, reducer::*};
+use crate::{
+    listener::{IntoStoreListener, StoreListener},
+    reducer::{IntoStoreReducer, StoreReducer},
+};
 use std::{
     any::{Any, TypeId},
     collections::HashMap,
@@ -21,8 +24,8 @@ impl<S> Store<S> {
     pub fn new(state: S) -> Self {
         Self {
             state,
-            reducers: Default::default(),
-            listeners: Default::default(),
+            reducers: HashMap::new(),
+            listeners: HashMap::new(),
         }
     }
 
@@ -95,7 +98,7 @@ mod test {
     use crate::type_map::TypeMap;
 
     #[test]
-    #[should_panic]
+    #[should_panic(expected = "Reducer requires state not present in store")]
     fn test_missing_state() {
         struct Count(i32);
         enum CountAction {
