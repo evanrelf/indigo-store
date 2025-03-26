@@ -66,7 +66,7 @@ macro_rules! type_map {
         $crate::type_map::TypeMap::new();
     };
     ($($value:expr),+ $(,)?) => {{
-        let mut type_map = $crate::type_map::TypeMap::new();
+        let mut type_map = $crate::TypeMap::new();
         $(type_map.insert($value);)*
         type_map
     }};
